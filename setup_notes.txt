@@ -1,0 +1,1 @@
+pipreqs . --encoding=utf8 --force #to list all installed modules
