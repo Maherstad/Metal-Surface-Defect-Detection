@@ -4,6 +4,7 @@ import os
 import numpy as np
 import pandas as pd 
 from PIL import Image
+import albumentations
 
 import matplotlib.pyplot as plt
 import xml.etree.ElementTree as ET
@@ -142,7 +143,7 @@ def visualize_data( defect_type = 'random' ,
                     return key
             # Value not found
             return None
-        
+
         for obj in bounding_boxes:
             name = obj[0]
             if name == 10: #10 is assigned for no defects, so no bounding boxes need to be plotted 
@@ -268,6 +269,21 @@ def construct_dataframe(image_directory : str = os.path.join('.','dataset','imag
 
     return df
 
+def transform_image_and_bbs(img_arr, bboxes, h, w):
+    """
+    :param img_arr: original image as a numpy array
+    :param bboxes: bboxes as numpy array where each row is 'x_min', 'y_min', 'x_max', 'y_max', "class_id"
+    :param h: resized height dimension of image
+    :param w: resized weight dimension of image
+    :return: dictionary containing {image:transformed, bboxes:['x_min', 'y_min', 'x_max', 'y_max', "class_id"]}
+    """
+    # create resize transform pipeline
+    transform = albumentations.Compose(
+        [albumentations.Resize(height=h, width=w, always_apply=True)],
+        bbox_params=albumentations.BboxParams(format='pascal_voc'))
 
+    transformed = transform(image=img_arr, bboxes=bboxes)
+
+    return transformed
 
 
