@@ -1,2 +1,12 @@
-numpy==1.25.1
+albumentations==1.3.1
+comet_ml==3.33.6
+matplotlib==3.7.2
+my_project==0.2dev
+numpy==1.24.1
+opendatasets==0.1.22
 pandas==2.0.3
+Pillow==9.3.0
+Pillow==10.0.0
+torch==2.0.1+cu118
+torchvision==0.15.2+cu118
+ultralytics==8.0.139
