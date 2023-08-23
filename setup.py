@@ -28,14 +28,13 @@ import opendatasets as od
 import os
 #import comet_ml
 
-import torch
 from sklearn.model_selection import train_test_split
 from utils import construct_dataframe,transform_image_and_bbs,construct_yolo_compatible_data_structure
 
 
 od.download('https://www.kaggle.com/datasets/zhangyunsheng/defects-class-and-location')
 
-comet_ml.init()
+#comet_ml.init()
 
 paths = [
 os.path.join(os.getcwd(),'yolo_dataset'),
