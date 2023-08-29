@@ -168,7 +168,6 @@ def visualize_data( defect_type = 'random' ,
             ax.text(xmin, ymin, get_key_by_value(defect_categories,name), color='r', verticalalignment='top')
             print(f"{name:15} | ({xmin:4},{ymin:4}) | ({xmax:4},{ymax:4})")
         plt.axis('off')
-        plt.title(f"sample of dataset")
         plt.show()
 
     else: #read from the dictionary and show a sample()
@@ -183,7 +182,6 @@ def visualize_data( defect_type = 'random' ,
 
         xml_path = sample['xml_path'].item()
         image_path = sample['img_path'].item()
-
         tree_path = xml_path
         tree = ET.parse(tree_path)
         root = tree.getroot()
@@ -215,17 +213,17 @@ def visualize_data( defect_type = 'random' ,
 
             # Add the patch to the axes
             ax.add_patch(rect)
-            ax.text(xmin, ymin, name, color='r', verticalalignment='top')
+            ax.text(xmin, ymin-60, name, color='r', verticalalignment='top')
 
             print(f"{name:15} | ({xmin:4},{ymin:4}) | ({xmax:4},{ymax:4})")
 
         # Set axis labels and title
         plt.axis('off')
-        plt.title(f"sample of dataset")
 
         # Show the image with bounding boxes
         plt.show()
 
+    print(f'image_path is {image_path}')
 
 
 def construct_dataframe(image_directory : str = os.path.join('.','defects-class-and-location','images','images'),
