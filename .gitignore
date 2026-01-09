@@ -226,7 +226,6 @@ lightning_logs/
 # Large image files in root (keep in assets/)
 /*.jpg
 /*.jpeg
-/*.png
 !assets/**/*.jpg
 !assets/**/*.jpeg
 !assets/**/*.png
